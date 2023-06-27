@@ -14,11 +14,11 @@ const getDogData =async()=>{
   //cache:'no-store Означает что в данном случае картинка не будет кешироваться ,и при каждом рефреше будет новая картинка
   const res=await fetch('https://dog.ceo/api/breeds/image/random',
   {
-    // cache:'no-store'
+    cache:'no-store',
     //Revalidate предотвращает рефреш в течении указанных секунд во избежание случайного клика
-    next:{
-      revalidate:10,
-    }
+    // next:{
+    //   revalidate:10,
+    // }
   })
   return res.json();
 }
@@ -40,6 +40,7 @@ const [posts,users,dog]=await Promise.all(
  
     return (
       <div className="text-white">
+
        {
         posts.map((post:Posts)=>{
          return <div>
